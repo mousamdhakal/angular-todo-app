@@ -1,23 +1,14 @@
-<div class="todos__list-item" key={todo.id}>
-  <span [ngClass] = "setTextClass()"
-    
-  >
-    {{todo.text}}
+<div class="todos__list-item" key="{todo.id}">
+  <span [ngClass]="setTextClass()">
+    {{ todo.text }}
   </span>
-  <button
-    class="todos__button todos__button--delete"
-  >
+  <button class="todos__button todos__button--delete" (click)="onDelete(todo)">
     <i class="fas fa-trash-alt"></i>
   </button>
   <button
     class="todos__button todos__button--checkbox"
+    (click)="onToggle(todo)"
   >
-  <i [ngClass]="setCompletedClass()" ></i>
-  <!-- <i class="far fa-square"></i> -->
-    <!-- {todo.complete ? (
-      <i class="far fa-check-square"></i>
-    ) : (
-      
-    )} -->
+    <i [ngClass]="setCompletedClass()"></i>
   </button>
 </div>

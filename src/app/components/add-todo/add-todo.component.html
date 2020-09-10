@@ -1,0 +1,10 @@
+<form class="form" (submit)="handleSubmit(text)">
+  <input
+    class="form__input"
+    type="text"
+    placeholder="Add task here"
+    name="add-task"
+    [(ngModel)] ="text"
+    autoFocus
+  />
+</form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
 
 @Component({
@@ -6,15 +6,9 @@ import { Todo } from 'src/app/models/Todo';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent {
   @Input() todo: Todo;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  
+  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
   setTextClass() {
     let classes = {
@@ -33,6 +27,14 @@ export class TodoItemComponent implements OnInit {
     }
 
     return classes;
+  }
+
+  onToggle(todo) {
+    todo.complete = !todo.complete;
+  }
+
+  onDelete(todo) {
+    this.deleteTodo.emit(todo);
   }
 
 }
